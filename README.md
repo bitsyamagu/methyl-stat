@@ -8,5 +8,5 @@
   - methylcall calls methylation for each base from results of methylstat.
 - methylblock
   - methylblock detects highly methylated regions from results of methylcall.
--ont2bisal
-  - ont2bisal converts an ONT's BAM file to a virtually Bisul-nized BAM file to utilie IGV for detailed visualization.
+- ont2bisal
+  - converts an ONT's BAM file to a virtually Bisul-nized BAM file to utilie IGV for detailed visualization.
