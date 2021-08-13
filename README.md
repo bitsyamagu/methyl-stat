@@ -9,4 +9,4 @@
 - methylblock
   - methylblock detects highly methylated regions from results of methylcall.
 - ont2bisul
-  - converts an ONT's BAM file to a virtually Bisul-nized BAM file to utilie IGV for detailed visualization.
+  - converts an ONT's BAM file to a virtually Bisul-nized BAM file to utilize IGV for detailed visualization.
