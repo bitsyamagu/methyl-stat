@@ -1,6 +1,6 @@
 # methyl-stat
 
-'methyl-stat' is a collection of command-line tools for analyzing nethylation aware ONT sequencing data.
+'methyl-stat' is a collection of command-line tools for analyzing methylation aware ONT sequencing data.
 
 - methylstat
   - methylstat mapps modification scores to reference bases. 
