@@ -34,9 +34,10 @@ cd methylstat
 cargo build
 ```
 ## Building utilities
+```
 cd methylstat-util
 make
-
+```
 # Analysis
 
 ## Input
