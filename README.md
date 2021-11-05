@@ -15,7 +15,7 @@
 
 # Installation
 ## Dependencies
-methylstat reuqires following systems:
+methylstat reuqires following softwares and libraries:
 - hdflib
    - https://www.hdfgroup.org/downloads/hdf5/source-code/ 
 - hdf5 package (for h5ls commmand)
