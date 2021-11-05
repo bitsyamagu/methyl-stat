@@ -1,0 +1,58 @@
+#!/usr/bin/perl -w
+
+use strict;
+use File::Basename 'basename';
+
+my $reference = "/refgenomes/Homo_sapiens.GRCh38.dna_sm.primary_assembly_fix.fa";
+my $CLASSPATH = "/methylstat-util";
+my $PATH = "";
+my @chrs = qw(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 X Y);
+my $INTERVAL = 500;
+my $THRESHOLD = 20;
+my $bed = undef;
+# --input called --interval 200 --threshold 30 --out prom180.methylblock.interval200.score30.bed
+#
+for(my $i = 0; $i<@ARGV; $i++){
+	if($ARGV[$i] eq '--interval'){
+		$INTERVAL = $ARGV[$i+1];
+	}
+	if($ARGV[$i] eq '--threshold'){
+		$THRESHOLD = $ARGV[$i+1];
+	}
+	if($ARGV[$i] eq '--input'){
+		$PATH = $ARGV[$i+1];
+	}
+	if($ARGV[$i] eq '--out'){
+		$bed = $ARGV[$i+1];
+	}
+
+}
+
+my @list = ();
+
+my $wig = $bed;
+$wig =~ s/.bed$/.wig/;
+unlink($bed);
+unlink($wig);
+
+foreach my $chr (@chrs){
+	$chr = "chr$chr";
+ #  my $ls = "ls -1 $PATH/$chr"."_*methyl.txt";
+ #  my @files = `$ls`;
+ #  chomp @files;
+ #  foreach my $file (@files){
+ #      my $name = basename($file);
+ #      my ($chr, $start, $end, $ext) = split(/[_\-\.]/, $name);
+ #      # print $start, ",", $end, "\n";
+ #      my $ref = {'chr' => $chr, 'start' => $start, 'end'=> $end, 'file' => $file};
+ #      push(@list, $ref);
+ #  }
+ #  my @sorted = sort { $a->{'chr'} cmp $b->{'chr'} || $a->{'start'} <=> $b->{'start'} } @list;
+    my $com = "java -cp $CLASSPATH:$CLASSPATH/gatk-package-4.1.4.1-spark.jar:$CLASSPATH/commons-math3-3.6.1.jar:. MethylBlock $PATH $chr $INTERVAL $reference $THRESHOLD $bed";
+    # print $com, "\n";
+    print "$com\n";
+    `$com`;
+}
+
+
+

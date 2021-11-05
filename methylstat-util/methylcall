@@ -1,0 +1,3 @@
+
+CLASSPATH=/methylstat-util:/methylstat-util/lib/gatk-package-4.1.4.1-spark.jar
+java -Xmx256g -cp ${CLASSPATH} MethylCall $@
