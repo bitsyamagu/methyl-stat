@@ -8,6 +8,8 @@
   - methylcall calls methylation for each base from results of methylstat.
 - methylblock
   - methylblock detects highly methylated regions from results of methylcall.
+- f5_to_fq
+  - fastq extraction tool for reads with ModbaseProbs data.
 - ont2bisul
   - ont2bisul transforms an ONT's BAM file to a virtually Bisul-converted BAM file to utilize IGV for detailed visualization.
 
@@ -44,4 +46,4 @@ We are using long-read sequences produced from PromethION and base-called by gup
 1. Merge all reads into a bam file, and sort and make index of it.
 1. Create FAST5-to-readId index
   - perl fast5index.pl workspace > fast5_index.txt
-1.  
+1. (to be continued)
