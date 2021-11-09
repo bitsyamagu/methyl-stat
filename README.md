@@ -38,6 +38,30 @@ cargo build
 cd methylstat-util
 make
 ```
+
+## Building ont2bisul
+- Build and install hdf5 libs
+```
+dnf install boost boost-level boost-filesystem
+
+wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.1/src/hdf5-1.12.1.tar
+
+cd hdf5-1.12.1
+./configure --prefix=/usr/local/hdf5
+make
+make install
+```
+- Build ont2bisul
+```
+git clone git@github.com:bitsyamagu/methyl-stat.git
+cd methyl-stat/ont2bisul
+cargo build
+```
+- Install
+```
+cp target/debug/ont2bisul /usr/local/bin
+```
+
 # Analysis
 
 ## Input
