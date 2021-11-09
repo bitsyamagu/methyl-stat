@@ -58,7 +58,7 @@ cd hdf5-1.12.1
 make
 make install
 ```
-  - If you've installed hdf5 other than /usr/local/bin, customize the path written in build.rs
+    - If you've installed hdf5 other than /usr/local/bin, customize the path written in build.rs
 - Build ont2bisul
 ```
 # dependency
