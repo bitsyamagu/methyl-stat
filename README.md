@@ -46,10 +46,13 @@ cd methylstat-util
 make
 ```
 
+methylcall and methylblockb are short-cut script. 
+Customize paths written in these scripts for your environment.
+
 ## Building ont2bisul
 - Build and install hdf5 libs
 ```
-dnf install boost boost-level boost-filesystem
+dnf install boost boost-devel boost-filesystem
 
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.1/src/hdf5-1.12.1.tar
 
@@ -76,6 +79,7 @@ cp target/debug/ont2bisul /usr/local/bin
 ```
 export HDF5_DIR=/usr/local/hdf5
 cargo build
+cp target/denug/f5_to_fq /usr/local/bin
 ```
 
 # Analysis
