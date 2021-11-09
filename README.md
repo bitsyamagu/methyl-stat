@@ -16,7 +16,7 @@ This system is developped and tested in CentOS7 and CentOS8 environment.
   - ont2bisul transforms an ONT's BAM file to a virtually Bisul-converted BAM file to utilize IGV for detailed visualization.
 
 # Installation
-## Dependencies
+## Common dependencies
 methylstat reuqires following softwares and libraries:
 - hdflib
    - https://www.hdfgroup.org/downloads/hdf5/source-code/ 
@@ -27,15 +27,20 @@ methylstat reuqires following softwares and libraries:
 - jdk11 
 - perl
 - nextflow (for nextflow pipeline script)
-- gatk-package-4.1.4.1-spark.jar or later
-- htsjdk-2.17.0.jar or later
-- commons-math3-3.6.1.jar (not 3.7)
+
 ## Building methylstat
 ```
 cd methylstat
 cargo build
 ```
 ## Building utilities
+
+Download libraries:
+- gatk-package-4.1.4.1-spark.jar or later
+- htsjdk-2.17.0.jar or later
+- commons-math3-3.6.1.jar (not 3.7)
+
+And put them into the methylstat-call/ directory
 ```
 cd methylstat-util
 make
@@ -53,6 +58,7 @@ cd hdf5-1.12.1
 make
 make install
 ```
+  - If you've installed hdf5 other than /usr/local/bin, customize the path written in build.rs
 - Build ont2bisul
 ```
 # dependency
@@ -77,11 +83,16 @@ cargo build
 ## Input
 We are using long-read sequences produced from PromethION and base-called by guppy.
 
-1. Map reads to reference genome by minimap2.
-1. Merge all reads into a bam file, and sort and make index of it.
+## How to
+1. Preparation of a bam file
+    1. Extract FastQ files from Fast5 files by f5_to_fq tool
+    1. Map these FastQ reads to a reference genome by minimap2.
+    1. Merge all mapped reads into a bam file, and sort it and make index of it.
 1. Create FAST5-to-readId index
-  - perl fast5index.pl workspace > fast5_index.txt
-1. (to be continued)
+   - perl fast5index.pl workspace > fast5_index.txt
+1. Run methylstat by shell commands or nextflow
+1. Run methylcall by shell commands or nextflow
+1. Run methylblockb by shell commands or nextflow
 
 ## ont2bisul usage
 Example:
