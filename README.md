@@ -11,7 +11,7 @@ This system is developped and tested in CentOS7 and CentOS8 environment.
 - methylblock
   - methylblock detects highly methylated regions from results of methylcall.
 - f5_to_fq
-  - fastq extraction tool for reads with ModbaseProbs data.
+  - fastq extraction tool for reads with ModbaseProbs data stored in fast5 files.
 - ont2bisul
   - ont2bisul transforms an ONT's BAM file to a virtually Bisul-converted BAM file to utilize IGV for detailed visualization.
 
@@ -65,6 +65,11 @@ cargo build
 - Install
 ```
 cp target/debug/ont2bisul /usr/local/bin
+```
+## Building f5_to_fq
+```
+export HDF5_DIR=/usr/local/hdf5
+cargo build
 ```
 
 # Analysis
