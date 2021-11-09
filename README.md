@@ -97,4 +97,5 @@ Options:
   - The index file of read names in fast5 files. You can generate this by using fast5index.pl 
 - --fasta-index  
   - Path to fai file of reference sequence
-- --out Bisul converted BAM file
+- --out:
+  -  Bisul converted BAM file
