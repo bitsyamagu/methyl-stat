@@ -53,15 +53,15 @@ Customize paths written in these scripts for your environment.
 - Build and install hdf5 libs
 ```
 dnf install boost boost-devel boost-filesystem
-
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.1/src/hdf5-1.12.1.tar
-
 cd hdf5-1.12.1
 ./configure --prefix=/usr/local/hdf5
 make
 make install
 ```
+
     - If you've installed hdf5 other than /usr/local/bin, customize the path written in build.rs
+    
 - Build ont2bisul
 ```
 # dependency
