@@ -16,7 +16,6 @@ use libc::{ c_void, c_char, size_t };
 use std::ffi::{ CStr, CString };
 
 #[macro_use]
-mod phased_vcf;
 mod fastq;
 mod fasta;
 mod genomic_region;
@@ -291,6 +290,7 @@ pub fn complementary(b: char) -> char{
         include_dels: bool,
     ) -> Result<Option<u32>> {
 */
+/*
 pub fn check_haplotype(fastq: &fastq::FastQ, read: &mut bam::Record, vcf: &Vec<phased_vcf::SNP>) -> Option<HaplotypeProfile>{
     let mut profile = None;
     let start_index = vcf.iter().position(|x| x.pos > read.pos() as u32).unwrap();
@@ -336,7 +336,7 @@ pub fn check_haplotype(fastq: &fastq::FastQ, read: &mut bam::Record, vcf: &Vec<p
     }
     profile
 }
-
+*/
 pub fn get_fastq(read: &Record, f5map: &HashMap<String, String>, fast5_dir: String, grpidx: &mut i32) -> Option<String> {
     let qname: String = format!("read_{}", String::from_utf8(read.qname().to_vec()).unwrap());
     let fname: &String;
