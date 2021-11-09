@@ -77,3 +77,24 @@ We are using long-read sequences produced from PromethION and base-called by gup
 1. Create FAST5-to-readId index
   - perl fast5index.pl workspace > fast5_index.txt
 1. (to be continued)
+
+## ont2bisul usage
+Example:
+```
+ont2bisul --region chr1:12000000-125000000 --bam my_test.bam \
+     --fast5-dir workspace/ --index fast5index.txt \
+     --fasta-index /path/to/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fai \
+     --out chr_1_12000000-125000000.BS.bam
+```
+Options:
+- --region:
+  - For target region to convert
+- --bam:
+  - Your source BAM file. 
+- --fast5-dir
+  - The directory containing fast5 files
+- --index:
+  - The index file of read names in fast5 files. You can generate this by using fast5index.pl 
+- --fasta-index  
+  - Path to fai file of reference sequence
+- --out Bisul converted BAM file
