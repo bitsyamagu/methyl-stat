@@ -1,3 +1,5 @@
+This system is developped and tested in CentOS7 and CentOS8 environment.
+
 # methyl-stat
 
 'methyl-stat' is a collection of command-line tools for analyzing methylation aware ONT sequencing data.
@@ -53,6 +55,9 @@ make install
 ```
 - Build ont2bisul
 ```
+# dependency
+dnf install perl-IPC-Cmd
+
 git clone git@github.com:bitsyamagu/methyl-stat.git
 cd methyl-stat/ont2bisul
 cargo build
