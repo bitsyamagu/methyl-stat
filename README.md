@@ -30,7 +30,8 @@ methylstat reuqires following softwares and libraries:
 
 ## Building methylstat
 ```
-cd methylstat
+git clone https://github.com/bitsyamagu/methyl-stat.git
+cd methyl-stat/methylstat
 cargo build
 ```
 ## Building utilities
@@ -42,7 +43,8 @@ Download libraries:
 
 And put them into the methylstat-call/ directory
 ```
-cd methylstat-util
+git clone https://github.com/bitsyamagu/methyl-stat.git
+cd methyl-stat/methylstat-util
 make
 ```
 
@@ -66,7 +68,7 @@ If you've installed hdf5 other than /usr/local/bin, customize the path written i
 # dependency
 dnf install perl-IPC-Cmd
 
-git clone git@github.com:bitsyamagu/methyl-stat.git
+git clone https://github.com/bitsyamagu/methyl-stat.git
 cd methyl-stat/ont2bisul
 cargo build
 ```
@@ -76,6 +78,9 @@ cp target/debug/ont2bisul /usr/local/bin
 ```
 ## Building f5_to_fq
 ```
+git clone https://github.com/bitsyamagu/methyl-stat.git
+cd methyl-stat/f5_to_fq
+
 export HDF5_DIR=/usr/local/hdf5
 cargo build
 cp target/denug/f5_to_fq /usr/local/bin
