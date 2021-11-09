@@ -22,7 +22,7 @@ methylstat reuqires following softwares and libraries:
    - https://www.hdfgroup.org/downloads/hdf5/source-code/ 
 - hdf5 package (for h5ls commmand)
    - dnf install hdf5
-- gcc
+- gcc (We tested with GNU C++-8.5.0)
 - rust 1.39 or more
 - jdk11 
 - perl
