@@ -134,7 +134,7 @@ fn main() {
     let mut bam = bam::IndexedReader::from_path(bam_path).unwrap();
     let mut out = Writer::from_path(&out_path,
         &Header::from_template(bam.header()),
-        Format::BAM
+        Format::Bam
         ).expect("Error opening file.");
     
 	for mut region in regions {
