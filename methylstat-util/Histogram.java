@@ -35,7 +35,7 @@ public class Histogram {
 	public static String trim(String src){
 		return src.substring(1, src.length()-1);
 	}
-	public void run(String path, boolean eval_by_rate, double rate_threshold, boolean methylkit){
+	public void run(String path, boolean eval_by_rate, double rate_threshold, boolean methylkit, int modbaseprobs_threshold){
 		System.err.println("methylkit mode: " + methylkit);
 	    String chromosome = null;
 		int start = -1;
@@ -115,7 +115,7 @@ public class Histogram {
 					short s = it.next();
 					// out.print(s + ", ");
 					// System.err.println(path + ": " + s);
-					if (s > 128){
+					if (s > modbaseprobs_threshold){
 						met++;
 					}else {
 						nomet++;
