@@ -13,7 +13,7 @@ This system is developped and tested in CentOS7 and CentOS8 environment.
 - f5_to_fq
   - fastq extraction tool for reads with ModbaseProbs data stored in fast5 files.
 - ont2bisul
-  - ont2bisul transforms an ONT's BAM file to a virtually Bisul-converted BAM file to utilize IGV for detailed visualization.
+  - ont2bisul transforms an ONT's BAM file to a virtually bisulfite-converted BAM file to utilize IGV for detailed visualization.
 
 # Installation
 ## Common dependencies
