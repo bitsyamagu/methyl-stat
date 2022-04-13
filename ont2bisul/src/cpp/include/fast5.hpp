@@ -8,6 +8,8 @@ struct modbase {
     char* bases;
     uint32_t  width;
     uint32_t  height;
+    uint32_t  col_5mc;
+	uint32_t  col_6ma;
 };
 
   void fast5_open(const char*);
