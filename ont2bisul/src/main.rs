@@ -30,7 +30,9 @@ use genomic_region::GenomicRegion;
 pub struct ModBase {
     pub bases: *const c_char,
     pub width: u32,
-    pub height: u32
+    pub height: u32,
+    pub col_5mc: u32,
+    pub col_6ma: u32
 }
 
 #[link(name = "fast5", kind = "static")]
@@ -370,7 +372,9 @@ pub fn add_mod_info(fastq: &mut fastq::FastQ, mb: &ModBase/*, qname: &String*/) 
     let mut idx: usize = 0;
     let array: &[c_char] = unsafe {slice::from_raw_parts(mb.bases, (mb.width*mb.height) as usize)};
     // println!("{}: (width, height) = ({}, {})", qname, mb.width, mb.height);
-    let COL_6mA = 1; let COL_5mC = 3;
+    // let COL_6mA = 1; let COL_5mC = 3;
+    let COL_6mA = mb.col_6ma;
+    let COL_5mC = mb.col_5mc;
     let mut prob6mA = vec![0 as u8; mb.width as usize];
     let mut prob5mC = vec![0 as u8; mb.width as usize];
     for row in 0..mb.width {
