@@ -25,9 +25,9 @@ int get_data_index(const char* readid){
     hsize_t num_obj;
     hsize_t num_u_ana;
 
-	const char* ptn = "/read_%s/Analyses";
-	char fqpath[256];
-	sprintf(fqpath, ptn, readid);
+    const char* ptn = "/read_%s/Analyses";
+    char fqpath[256];
+    sprintf(fqpath, ptn, readid);
     grpid = H5Gopen(file, fqpath, H5P_DEFAULT);
     H5Gget_num_objs(grpid, &num_u_ana);
     char name[256];
@@ -124,7 +124,20 @@ struct modbase read_modbase(const char* path){
             // printf("# %s %hu %hu %hu %hu %hu %hu\n", path, line[0], line[1], line[2], line[3], line[4], line[5]);
         }
     }
-    struct modbase result = {rdata[0], dims[0], dims[1]};
+    char buf[32];
+    hid_t att_modified_base_long_names = H5Aopen_name(dset, "modified_base_long_names");
+    hid_t att_type = H5Tcopy (H5T_C_S1);
+    status = H5Tset_size (att_type, 32);
+    H5Aread(att_modified_base_long_names, att_type, buf);
+    int mc_col = 3;
+    int ma_col = 1;
+    if(strncmp(buf, "6mA 5mC", 7) == 0){
+     	// noop
+    }else if(strncmp(buf, "5mC", 3) == 0 && strlen(buf)==3){
+        mc_col = 2;
+        ma_col = 9999;
+    }
+    struct modbase result = {rdata[0], dims[0], dims[1], mc_col, ma_col};
 
     // for (int i=0; i<dims[0]; i++)
     //     printf ("[%d]: %d\n", i, rdata[i]);
@@ -134,6 +147,7 @@ struct modbase read_modbase(const char* path){
     status = H5Sclose (space);
     status = H5Tclose (filetype);
     status = H5Tclose (memtype);
+    status = H5Tclose (att_type);
 
     //cerr << "size = " << ( dims[0] * sdim * sizeof (char)) << endl;
     return result;
