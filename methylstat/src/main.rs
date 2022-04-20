@@ -26,7 +26,9 @@ use genomic_region::GenomicRegion;
 pub struct ModBase {
     pub bases: *const c_char,
     pub width: u32,
-    pub height: u32
+    pub height: u32,
+    pub mc_col: u32,
+    pub ma_col: u32
 }
 
 #[link(name = "fast5", kind = "static")]
@@ -290,7 +292,6 @@ pub fn complementary(b: char) -> char{
         include_dels: bool,
     ) -> Result<Option<u32>> {
 */
-/*
 pub fn check_haplotype(fastq: &fastq::FastQ, read: &mut bam::Record, vcf: &Vec<phased_vcf::SNP>) -> Option<HaplotypeProfile>{
     let mut profile = None;
     let start_index = vcf.iter().position(|x| x.pos > read.pos() as u32).unwrap();
@@ -336,7 +337,7 @@ pub fn check_haplotype(fastq: &fastq::FastQ, read: &mut bam::Record, vcf: &Vec<p
     }
     profile
 }
-*/
+
 pub fn get_fastq(read: &Record, f5map: &HashMap<String, String>, fast5_dir: String, grpidx: &mut i32) -> Option<String> {
     let qname: String = format!("read_{}", String::from_utf8(read.qname().to_vec()).unwrap());
     let fname: &String;
@@ -369,7 +370,8 @@ pub fn add_mod_info(fastq: &mut fastq::FastQ, mb: &ModBase/*, qname: &String*/) 
     let mut idx: usize = 0;
     let array: &[c_char] = unsafe {slice::from_raw_parts(mb.bases, (mb.width*mb.height) as usize)};
     // println!("{}: (width, height) = ({}, {})", qname, mb.width, mb.height);
-    let COL_6mA = 1; let COL_5mC = 3;
+    let COL_6mA = mb.ma_col;
+    let COL_5mC = mb.mc_col;
     let mut prob6mA = vec![0 as u8; mb.width as usize];
     let mut prob5mC = vec![0 as u8; mb.width as usize];
     for row in 0..mb.width {
